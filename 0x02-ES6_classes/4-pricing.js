@@ -1,24 +1,25 @@
-/* eslint-disable no-underscore-dangle */
+import Currency from './3-currency';
+
 export default class Pricing {
   constructor(amount, currency) {
     this._amount = amount;
-    this._currency = currency;
+    if (currency instanceof Currency) this._currency = currency;
   }
 
-  getAmount() {
+  get amount() {
     return this._amount;
   }
 
-  setAmount(value) {
-    this._amount = value;
+  set amount(newAmount) {
+    this._amount = newAmount;
   }
 
-  getCurrency() {
+  get currency() {
     return this._currency;
   }
 
-  setCurrency(value) {
-    this._currency = value;
+  set currency(newCurrency) {
+    if (newCurrency instanceof Currency) this._currency = newCurrency;
   }
 
   displayFullPrice() {
@@ -26,6 +27,6 @@ export default class Pricing {
   }
 
   static convertPrice(amount, conversionRate) {
-    return (amount * conversionRate);
+    return amount * conversionRate;
   }
 }
