@@ -1,5 +1,5 @@
 /* function that returns an updated map of all items with initial quality at t1
- * if accepts a map as an argument. 
+ * if accepts a map as an argument.
  */
 
 export default function updateUniqueItems(map) {
