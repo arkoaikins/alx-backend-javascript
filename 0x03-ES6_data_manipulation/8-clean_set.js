@@ -5,13 +5,13 @@
  */
 
 export default function cleanSet(set, startString) {
-  const setValues = [];
-  set.forEach((str) => {
-    if (startString !== '') {
-      if (str.startsWith(startString)) {
-        setValues.push(str.slice(startString.length));
-      }
-    }
-  });
+  if (!set || !startString || !(set instanceof Set) || typeof startString !== 'string') {
+    return '';
+  }
+
+  const setValues = Array.from(set)
+    .filter((str) => str && str.startsWith(startString))
+    .map((str) => str.slice(startString.length));
+
   return setValues.join('-');
 }
