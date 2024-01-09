@@ -5,14 +5,13 @@
  */
 
 export default function cleanSet(set, startString) {
-  if (startString === '') return '';
-  let result = '';
-
-  for (const value of set) {
-    if (value.startsWith(startString)) {
-      result += `${value.slice(startString.length)}-`;
+  const setValues = [];
+  set.forEach((str) => {
+    if (startString !== '') {
+      if (str.startsWith(startString)) {
+        setValues.push(str.slice(startString.length));
+      }
     }
-  }
-
-  return result.slice(0, -1); // Remove the trailing hyphen
+  });
+  return setValues.join('-');
 }
