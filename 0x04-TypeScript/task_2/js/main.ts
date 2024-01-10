@@ -48,9 +48,17 @@ export function createEmployee(firstName: string, lastName: string, salary: numb
     
     return new Director();
   }
-  
-  // Expected results
-  console.log(createEmployee("Kofi", "Kwame", 200)); 
-  console.log(createEmployee("Kojo", "Nana", 1000)); 
-  console.log(createEmployee("Kwame","kwesi",'$500', )); 
-  
+
+// New functions added
+export function isDirector(employee: DirectorInterface | TeacherInterface): employee is 
+DirectorInterface {
+    return (employee as DirectorInterface).workDirectorTasks !== undefined;
+}
+
+export function executeWork(employee: DirectorInterface | TeacherInterface): string {
+    if (isDirector(employee)) {
+        return employee.workDirectorTasks();
+    } else {
+        return employee.workTeacherTasks();
+    }
+}  
