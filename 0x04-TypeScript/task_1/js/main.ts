@@ -7,6 +7,10 @@ export interface Teacher {
     [propName: string]: any;
   }
   
+  interface Directors extends Teacher {
+    numberOfReports: number; 
+  }
+  
   class TeacherImpl implements Teacher {
     readonly firstName: string;
     readonly lastName: string;
@@ -34,4 +38,15 @@ export interface Teacher {
   const teacher3 = new TeacherImpl('Fosu', 'Dane', false, 'Ontario', { contract: false });
   
   console.log(teacher3);
+  
+  // Creating a Director object using the TeacherImpl class
+  const director1: Directors = {
+    firstName: 'John',
+    lastName: 'Doe',
+    location: 'London',
+    fullTimeEmployee: true,
+    numberOfReports: 17,
+  };
+  
+  console.log(director1);
   
