@@ -60,6 +60,41 @@ export interface Teacher {
     return `${firstName[0]}. ${lastName}`;
   }
   
-  // Example usage of printTeacher function
+  
   console.log(printTeacher('John', 'Doe')); 
+  
+  // Interface for StudentClass constructor
+  export interface IStudentClassConstructor {
+    new (firstName: string, lastName: string): IStudentClass;
+  }
+  
+  // Interface for StudentClass methods
+  export interface IStudentClass {
+    workOnHomework(): string;
+    displayName(): string;
+  }
+  
+  // Implementation of StudentClass
+  export class StudentClass implements IStudentClass {
+    private _firstName: string;
+    private _lastName: string;
+  
+    constructor(firstName: string, lastName: string) {
+      this._firstName = firstName;
+      this._lastName = lastName;
+    }
+  
+    workOnHomework() {
+      return 'Currently working';
+    }
+  
+    displayName() {
+      return this._firstName;
+    }
+  }
+  
+  // Function to create StudentClass instances
+  export function createStudent(ctor: IStudentClassConstructor, firstName: string, lastName: string): IStudentClass {
+    return new ctor(firstName, lastName);
+  }
   
