@@ -8,7 +8,7 @@ export interface Teacher {
   }
   
   interface Directors extends Teacher {
-    numberOfReports: number; 
+    numberOfReports: number;
   }
   
   class TeacherImpl implements Teacher {
@@ -45,8 +45,21 @@ export interface Teacher {
     lastName: 'Doe',
     location: 'London',
     fullTimeEmployee: true,
-    numberOfReports: 17,
+    numberOfReports: 17
   };
   
   console.log(director1);
+  
+  // Interface for the printTeacher function
+  export interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+  }
+  
+  // Implementation of the printTeacher function
+  export function printTeacher(firstName: string, lastName: string): string {
+    return `${firstName[0]}. ${lastName}`;
+  }
+  
+  // Example usage of printTeacher function
+  console.log(printTeacher('John', 'Doe')); 
   
