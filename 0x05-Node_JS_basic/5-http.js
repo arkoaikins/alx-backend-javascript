@@ -1,5 +1,5 @@
 const http = require('http');
-const countStudents = require('./2-read_file');
+const countStudents = require('./2-read_file'); // Update the path to the countStudents file
 
 const port = 1245;
 const host = '127.0.0.1';
@@ -13,8 +13,8 @@ const handleRequest = (req, res) => {
   } else if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
-      countStudents(process.argv[2]); // Call the countStudents function without console.log
-      res.end(); // End the response after calling countStudents
+      const result = countStudents(process.argv[2]);
+      res.end(result);
     } catch (error) {
       res.end('Cannot load the database');
     }
@@ -24,10 +24,10 @@ const handleRequest = (req, res) => {
   }
 };
 
-const server = http.createServer(handleRequest);
+const app = http.createServer(handleRequest);
 
-server.listen(port, host, () => {
+app.listen(port, host, () => {
   console.log(`Server running at http://${host}:${port}/`);
 });
 
-module.exports = server;
+module.exports = app;
