@@ -13,8 +13,8 @@ const handleRequest = (req, res) => {
   } else if (req.url === '/students') {
     res.write('This is the list of our students\n');
     try {
-      const result = countStudents(process.argv[2]);
-      res.end(result);
+      countStudents(process.argv[2]); // Call the countStudents function without console.log
+      res.end(); // End the response after calling countStudents
     } catch (error) {
       res.end('Cannot load the database');
     }
