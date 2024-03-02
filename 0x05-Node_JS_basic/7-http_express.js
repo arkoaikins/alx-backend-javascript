@@ -50,7 +50,7 @@ app.get('/students', async (req, res) => {
     const data = await countStudents(DATABASE_PATH);
     res.send(`This is the list of our students\n${data}`);
   } catch (error) {
-    res.send('This is the list of our students');
+    res.status(500).send(`This is the list of our students\n${error.message}`);
   }
 });
 
