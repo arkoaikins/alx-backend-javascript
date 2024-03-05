@@ -41,4 +41,36 @@ describe('Cart Page', () => {
       done();
     });
   });
+  describe('/login', () => {
+    it('should return the welcome message with the correct username', (done) => {
+      const username = 'JohnDoe';
+      request.post(
+        {
+          url: 'http://localhost:7865/login',
+          json: { userName: username }
+        },
+        (error, response, body) => {
+          expect(error).to.be.null;
+          expect(response.statusCode).to.equal(200);
+          expect(body).to.equal(`Welcome, ${username}`);
+          done();
+        }
+      );
+    });
+  });
+
+  describe('/available_payments', () => {
+    it('should return the correct payment methods', (done) => {
+      request.get('http://localhost:7865/available_payments', (error, response, body) => {
+        expect(error).to.be.null;
+        expect(response.statusCode).to.equal(200);
+        const paymentMethods = JSON.parse(body).payment_methods;
+        expect(paymentMethods).to.deep.equal({
+          credit_cards: true,
+          paypal: false
+        });
+        done();
+      });
+    });
+  });
 });
