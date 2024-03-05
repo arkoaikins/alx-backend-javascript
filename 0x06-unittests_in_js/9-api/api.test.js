@@ -34,4 +34,11 @@ describe('Cart Page', () => {
       done();
     });
   });
+  it('should return the correct message for the root URL', (done) => {
+    request.get('http://localhost:7865', (error, response, body) => {
+      expect(error).to.be.null;
+      expect(body).to.equal('Welcome to the payment system');
+      done();
+    });
+  });
 });
