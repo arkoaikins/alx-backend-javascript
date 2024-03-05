@@ -52,7 +52,7 @@ describe('Cart Page', () => {
         (error, response, body) => {
           expect(error).to.be.null;
           expect(response.statusCode).to.equal(200);
-          expect(body).to.equal(`Welcome, ${username}`);
+          expect(body).to.equal(`Welcome ${username}`);
           done();
         }
       );
