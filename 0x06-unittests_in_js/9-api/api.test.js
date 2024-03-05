@@ -1,4 +1,5 @@
-// ... existing Index Page tests ...
+const request = require('request');
+const { expect } = require('chai');
 
 describe('Cart Page', () => {
  it('should return the correct payment methods when id is a number', (done) => {
@@ -21,13 +22,10 @@ describe('Cart Page', () => {
  it('should handle invalid cart IDs gracefully', (done) => {
    request.get('http://localhost:7865/cart/-1', (error, response, body) => {
      expect(error).to.be.null;
-     expect(response.statusCode).to.equal(404); // Or a custom error code if applicable
+     expect(response.statusCode).to.equal(404);
      done();
    });
  });
 
- // Consider additional tests for:
- // - Response content when id is valid (payment methods data)
- // - Error handling for unexpected issues (e.g., server errors)
 });
 
