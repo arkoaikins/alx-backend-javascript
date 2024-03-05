@@ -23,7 +23,7 @@ app.get('/available_payments', (_req, res) => {
 
 app.post('/login', (req, res) => {
   const { userName } = req.body;
-  res.status(200).send(`Welcome, ${userName}`);
+  res.status(200).send(`Welcome ${userName}`);
 });
 
 app.listen(7865, () => {
